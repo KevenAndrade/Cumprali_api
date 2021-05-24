@@ -7,6 +7,26 @@ module.exports ={
         return res.json(results)
     },
 
+    async listaOne(req, res) {
+        try {
+            const { id } = req.params;
+            const query =  knex('tblproduto')
+
+            if (id) {
+                query
+                    .where({ idProduto: id })
+                    .join('tblsubcategoria', 'tblsubcategoria.IdSubCategoria', '=', 'tblproduto.IdProduto')
+                    .select('tblproduto.*', {subcategoria: 'tblsubcategoria.Nome'})
+            }
+
+            results = await query
+            return res.json(results)
+
+        } catch (error) {
+            next(error)
+        }
+    },
+
     async create(req, res, next) {
         try {
             const { Nome, Marca, Descricao, Photo,Lancamento ,Status ,
