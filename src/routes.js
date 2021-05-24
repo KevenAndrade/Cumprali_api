@@ -4,5 +4,6 @@ const ProdutoController = require('./controllers/ProdutoController');
 
 
 routes.get('/produtos', ProdutoController.lista)
+routes.post('/produtos', ProdutoController.create)
 
 module.exports = routes
