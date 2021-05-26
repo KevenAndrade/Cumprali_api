@@ -9,7 +9,7 @@ module.exports ={
         const [ count ] = await knex('tblproduto').count();
         console.log( count );
         
-        res.header('X-total-count',count["count(*)"] )
+        res.header('X-total-count', count["count(*)"] )
 
         return res.json(results)
     },
