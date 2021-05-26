@@ -5,10 +5,9 @@ module.exports ={
         try {
             const results = await knex('tblsubcategoria')
             return res.json(results)
-            
-        } catch (error) {
+
+        }catch (error) {
             next(error)
         }
-        
     },
 }
